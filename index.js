@@ -1,5 +1,3 @@
-
-// width of the drawing board
 const canvasWidth = 470;
 const initialCells = 16;
 const canvasColor = '#cdaa87';
@@ -17,7 +15,8 @@ function drawCanvas(cellsPerSide){
     let cell = document.createElement('div');
     cell.setAttribute('class', 'cell');
     cell.setAttribute(
-      'style', `width:${cellWidth}px;height:${cellWidth}px;background-color:${canvasColor};`
+      'style', `width:${cellWidth}px;height:${cellWidth}px;
+      background-color:${canvasColor};`
     );
     cell.addEventListener('mouseover', e => {
       e.target.style['background-color'] = inkColor;
@@ -29,6 +28,7 @@ function drawCanvas(cellsPerSide){
 // Draw initial canvas.
 drawCanvas(initialCells);
 
+// Wipes the canvas clean.
 function clear(){
   let cells = document.querySelectorAll('.cell');
   canvasContainer.replaceChildren();
@@ -37,7 +37,8 @@ function clear(){
 let buttonResolution = document.querySelector('.btn-resolution');
 let buttonClear = document.querySelector('.btn-clear');
 let userCellsPerSide = initialCells;
-// Clears elements and re-draws them.
+
+// Clear canvas and change resolution.
 buttonResolution.addEventListener('click', ()=> {
   userCellsPerSide = prompt(
     'Choose number of cells per side (max 99)'
@@ -51,6 +52,7 @@ buttonResolution.addEventListener('click', ()=> {
   }
 });
 
+// Clear canvas and keep resolution the same.
 buttonClear.addEventListener('click', ()=>{
   clear();
   drawCanvas(userCellsPerSide);
